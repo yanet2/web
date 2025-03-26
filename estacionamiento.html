@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estacionamiento</title>
+    <link rel="stylesheet" href="e.css">
+</head>
+<body>
+    <div class="image-container">
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <!-- plaza1 -->
+    <div class="plaza1">
+        <img src="BBVA.png" alt="plaza1">
+    </div>
+    <!-- plaza1 -->
+    <div class="plaza2">
+        <img src="co.png" alt="plaza2">
+    </div>
+    <!-- plaza3 -->
+    <div class="plaza3">
+        <img src="ccp.png" alt="plaza3">
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/index.html">Inicio</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/estacionamiento.html">Estacionamiento</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/reserva.html">Reservar</a></li>
+            <li><a href="https://www.google.com.mx/maps/@31.5892581,-106.4052544,15z?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D">Mapa</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/ayuda.html">Ayuda</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/contac.html">Contáctanos</a></li>
+        </ul>
+    </nav>
+      
+    <h1>Estacionamiento</h1>
+    
+
+    <div class="parking-lot">
+        <!-- Columna de entrada -->
+        <div class="column entrada">
+            <p>Entrada</p>
+            <div class="spot" id="A1">A1</div>
+            <div class="spot" id="A2">A2</div>
+            <div class="spot" id="A3">A3</div>
+        </div>
+
+        <!-- Zona central -->
+        <div class="center-zone">
+            <div class="row">
+                <div class="spot" id="A4">A4</div>
+                <div class="spot" id="A5">A5</div>
+            </div>
+            <div class="row">
+                <div class="spot" id="A6">A6</div>
+                <div class="spot" id="A9">A9</div>
+            </div>
+            <div class="row">
+                <div class="spot" id="A7">A7</div>
+                <div class="spot" id="A8">A8</div>
+            </div>
+        </div>
+
+        <!-- Columna de salida -->
+        <div class="column salida">
+            <p>Salida</p>
+            <div class="spot" id="A10">A10</div>
+            <div class="spot" id="A11">A11</div>
+            <div class="spot" id="A12">A12</div>
+        </div>
+    </div>
+
+    <!-- Zona inferior -->
+    <div class="bottom-row">
+        <div class="spot" id="A13">A13</div>
+        <div class="spot" id="A14">A14</div>
+        <div class="spot" id="A15">A15</div>
+        <div class="spot" id="A16">A16</div>
+    </div>
+
+    <p>Selecciona un lugar:</p>
+    <select id="parkingSelect">
+        <option value="">-- Seleccionar --</option>
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="A3">A3</option>
+        <option value="A4">A4</option>
+        <option value="A5">A5</option>
+        <option value="A6">A6</option>
+        <option value="A7">A7</option>
+        <option value="A8">A8</option>
+        <option value="A9">A9</option>
+        <option value="A10">A10</option>
+        <option value="A11">A11</option>
+        <option value="A12">A12</option>
+        <option value="A13">A13</option>
+        <option value="A14">A14</option>
+        <option value="A15">A15</option>
+        <option value="A16">A16</option>
+    </select>
+
+    <button id="toggleOccupied">Marcar como Ocupado</button>
+    <button id="nextButton" disabled onclick="window.location.href='RE.html';">Siguiente</button>
+
+    <script>
+        document.getElementById("parkingSelect").addEventListener("change", function() {
+            document.querySelectorAll(".spot").forEach(spot => spot.classList.remove("selected"));
+            const selectedSpot = document.getElementById(this.value);
+            if (selectedSpot && !selectedSpot.classList.contains("occupied")) {
+                selectedSpot.classList.add("selected");
+            }
+
+            // Habilitar el botón "Siguiente" solo si se ha seleccionado una plaza
+            document.getElementById("nextButton").disabled = !this.value;
+        });
+
+        document.getElementById("toggleOccupied").addEventListener("click", function() {
+            const selectedSpotId = document.getElementById("parkingSelect").value;
+            if (selectedSpotId) {
+                const selectedSpot = document.getElementById(selectedSpotId);
+                if (selectedSpot) {
+                    selectedSpot.classList.toggle("occupied");
+                    selectedSpot.classList.remove("selected");
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

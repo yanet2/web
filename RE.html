@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Estacionamiento</title>
+    <link rel="stylesheet" href="RE.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/index.html">Inicio</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/estacionamiento.html">Estacionamiento</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/reserva.html">Reservar</a></li>
+            <li><a href="https://www.google.com.mx/maps/@31.5892581,-106.4052544,15z?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D">Mapa</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/ayuda.html">Ayuda</a></li>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/contac.html">Contáctanos</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Detalles de tu Estacionamiento</h1>
+        
+        <p>Has seleccionado el lugar: <span id="selectedSpot">lugar seleccionado</span></p>
+        
+        <label for="startTime">Hora de entrada:</label>
+        <input type="time" id="startTime" required>
+        
+        <label for="endTime">Hora de salida:</label>
+        <input type="time" id="endTime" required>
+        
+        <button onclick="calculateCost()">Calcular Costo</button>
+        
+        <p>Total a pagar: <span id="totalCost">0</span> pesos</p>
+
+        <button onclick="generarQR()">Generar QR</button>
+        <div id="qr-container">
+            <div id="qr-code"></div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            const spot = params.get("spot");
+            document.getElementById("selectedSpot").textContent = spot || "No seleccionado";
+        });
+
+        function calculateCost() {
+            const startTime = document.getElementById("startTime").value;
+            const endTime = document.getElementById("endTime").value;
+            if (!startTime || !endTime) {
+                alert("Por favor, ingresa la hora de entrada y salida.");
+                return;
+            }
+
+            const start = new Date(`1970-01-01T${startTime}:00`);
+            const end = new Date(`1970-01-01T${endTime}:00`);
+            const diff = (end - start) / (1000 * 60 * 60); // Convertir milisegundos a horas
+            const cost = diff * 20;
+
+            document.getElementById("totalCost").textContent = cost.toFixed(2);
+        }
+
+        function generarQR() {
+            const spot = document.getElementById("selectedSpot").textContent;
+            const startTime = document.getElementById("startTime").value;
+            const endTime = document.getElementById("endTime").value;
+            const total = document.getElementById("totalCost").textContent;
+
+            // URL común para ambas páginas
+            const url = `${window.location.origin}/RE.html?spot=${encodeURIComponent(spot)}&start=${encodeURIComponent(startTime)}&end=${encodeURIComponent(endTime)}&total=${encodeURIComponent(total)}`;
+
+            document.getElementById("qr-code").innerHTML = "";
+
+            new QRCode(document.getElementById("qr-code"), {
+                text: url,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+</body>
+</html>

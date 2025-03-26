@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  /* Fondo con el degradado de la paleta Neutral Papyrus */
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #021024, #052659, #5483B3, #535b65, #A5ABB1);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+  }
+  /* Animación para hacer que el degradado se mueva */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+
+/* Contenedor principal */
+.container {
+  max-width: 700px;
+  width: 100%;
+  background-color: rgb(255, 255, 255); /* Fondo semi-transparente */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+  /* Título */
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  color: rgb(12, 12, 12);
+  position: relative;
+  text-align: center;
+}
+
+/* Línea decorativa debajo del título */
+.container .title::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  height: 3px;
+  width: 40px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #3C3E44, #A5ABB1);
+}
+  .image {
+    display: block;
+    max-width: 22%; /* Controla el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin: 20px auto 0 auto; /* Centra la imagen horizontalmente */
+    border-radius: 10px; /* Bordes redondeados opcionales */
+}
+/* Botón de registro */
+.button input {
+  height: 45px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #3C3E44;
+}
+
+.button input:hover {
+  background: #565C64;
+}
+
+
+
+
+
+/* Barra de navegación lateral */
+.navbar { 
+  width: 200px;
+  height: 100vh;
+  background: linear-gradient(135deg, #101010, #565C64);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.navbar ul li {
+  width: 100%;
+}
+
+.navbar ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Ajustar el contenido para que no se solape con el menú */
+.container {
+  margin-left: 220px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Logo en la esquina superior derecha */
+.image-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 200px;
+  height: auto;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Media queries para pantallas pequeñas */
+@media(max-width: 584px) {
+  .container {
+    max-width: 100%;
+    margin-left: 0;
+  }
+  
+  .navbar {
+    width: 100%;
+    height: auto;
+    position: static;
+    text-align: center;
+  }
+  
+  .navbar ul li {
+    display: inline-block;
+  }
+  
+  .navbar ul li a {
+    display: inline-block;
+    padding: 10px 15px;
+  }
+  
+  form .user-details .input-box {
+    width: 100%;
+  }
+  
+  .content form .user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  
+  .user-details::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+@media(max-width: 459px) {
+  .container .content .category {
+    flex-direction: column;
+  }
+}

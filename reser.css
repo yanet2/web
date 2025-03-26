@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo con el degradado */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #021024, #052659, #5483B3, #535b65, #A5ABB1);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 700px;
+  width: 100%;
+  background-color: white;
+  backdrop-filter: blur(10px);
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  margin-left: 220px;
+}
+
+/* Estilos del formulario */
+.input-box {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #021024;
+}
+
+/* Contenedor para la selección de hora */
+.time-select {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+/* Estilos para los select */
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Botón de reserva */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #052659;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #021024;
+}
+
+/* Barra de navegación lateral */
+.navbar {
+  width: 200px;
+  height: 100vh;
+  background: linear-gradient(135deg, #000000, #565C64);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0 15px rgba(8, 8, 8, 0.959);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.navbar ul li {
+  width: 100%;
+}
+
+.navbar ul li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Logo en la esquina superior derecha */
+.image-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 200px;
+  height: auto;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

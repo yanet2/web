@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservar Espacio</title>
+  <link rel="stylesheet" href="reser.css">
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/index.html">Inicio</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/estacionamiento.html">Estacionamiento</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/reserva.html">Reservar</a></li>
+      <li><a href="https://www.google.com.mx/maps/@31.5892581,-106.4052544,15z?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D">Mapa</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/ayuda.html">Ayuda</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/contac.html">Contáctanos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenedor principal -->
+  <div class="container">
+    <h2>Reservar Espacio</h2>
+    <form action="resumen.html" method="GET">
+      
+      <!-- Selección de Espacio -->
+      <div class="input-box">
+        <label for="espacio">Espacio:</label>
+        <select id="espacio" name="espacio" required>
+          <option value="">Seleccione un espacio</option>
+          <script>
+            for (let i = 1; i <= 16; i++) {
+              document.write(`<option value="A${i}">A${i}</option>`);
+            }
+          </script>
+        </select>
+      </div>
+
+      <!-- Hora de Inicio -->
+      <div class="input-box">
+        <label>Hora de inicio:</label>
+        <div class="time-select">
+          <select name="hora-inicio-horas">
+            <script>
+              for (let i = 1; i <= 12; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+          :
+          <select name="hora-inicio-minutos">
+            <option value="00">00</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+          </select>
+          <select name="hora-inicio-periodo">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Hora de Fin -->
+      <div class="input-box">
+        <label>Hora de finalización:</label>
+        <div class="time-select">
+          <select name="hora-fin-horas">
+            <script>
+              for (let i = 1; i <= 12; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+          :
+          <select name="hora-fin-minutos">
+            <option value="00">00</option>
+            <option value="15">15</option>
+            <option value="30">30</option>
+            <option value="45">45</option>
+          </select>
+          <select name="hora-fin-periodo">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit">Reservar</button>
+    </form>
+  </div>
+
+  <!-- Logo en la esquina superior derecha -->
+  <div class="image-container">
+    <img src="logo.png" alt="Logo">
+  </div>
+
+</body>
+</html>

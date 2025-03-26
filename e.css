@@ -1,0 +1,226 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #021024, #052659, #5483B3, #535b65, #A5ABB1);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Título */
+h1 {
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+/* Estructura del estacionamiento */
+.parking-lot {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Columnas de entrada y salida */
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+/* Zona central */
+.center-zone {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Fila inferior */
+.bottom-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Espacios de estacionamiento */
+.spot, .external-spot {
+    width: 80px;
+    height: 80px;
+    background-color: #232424; /* Disponible */
+    text-align: center;
+    line-height: 80px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.spot:hover, .external-spot:hover {
+    transform: scale(1.1);
+}
+
+/* Lugar seleccionado (verde) */
+.spot.selected, .external-spot.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Lugares ocupados (rojo) */
+.spot.occupied, .external-spot.occupied {
+    background-color: red;
+    color: white;
+    cursor: not-allowed;
+}
+
+/* Selector y botón */
+select, button {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Estilos para la barra de navegación alineada a la izquierda */
+.navbar { 
+    width: 200px;
+    height: 100vh;
+    background: linear-gradient(135deg, #151515, #565C64);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.navbar ul li {
+    width: 100%;
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Ajustar el contenido para que no se solape con el menú */
+.container {
+    margin-left: 220px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Logo en la esquina superior derecha */
+.image-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 200px;
+    height: auto;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* Plazas */
+.plaza1 {
+    position: absolute;
+    top: 200px;
+    right: 900px;
+    width: 130px;
+    height: auto;
+}
+.plaza1 img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: rotate(90deg); /* Rotar 45 grados */
+}
+
+.plaza2 {
+    position: absolute;
+    top: 350px;
+    right: 900px;
+    width: 130px;
+    height: auto;
+}
+.plaza2 img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: rotate(90deg); /* Rotar 90 grados */
+}
+
+.plaza3 {
+    position: absolute;
+    top: 270px;
+    left: 900px;
+    width: 130px;
+    height: auto;
+}
+.plaza3 img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transform: rotate(-270deg); /* Rotar -45 grados */
+}

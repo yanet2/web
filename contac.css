@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo con el degradado animado */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #021024, #052659, #5483B3, #535b65, #A5ABB1);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 700px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin-left: 220px;
+    transition: margin-left 0.3s ease-in-out;
+    text-align: center;
+}
+
+/* Logo centrado */
+.logo-container {
+    width: 150px;
+    margin: 0 auto 20px;
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Título */
+.title {
+    font-size: 25px;
+    font-weight: 500;
+    color: rgb(17, 17, 17);
+    margin-bottom: 20px;
+}
+
+/* Línea decorativa debajo del título */
+.title::before {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(135deg, #3C3E44, #A5ABB1);
+    margin: 5px auto;
+}
+
+/* Lista de contacto */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-list li {
+    background: rgba(0, 0, 0, 0.05);
+    margin: 10px 0;
+    padding: 12px;
+    border-left: 5px solid #007BFF;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.contact-list li a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.contact-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Barra de navegación lateral */
+.navbar {
+    width: 200px;
+    height: 100vh;
+    background: linear-gradient(135deg, #151515, #565C64);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.navbar ul li {
+    width: 100%;
+}
+
+.navbar ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Media queries para pantallas pequeñas */
+@media(max-width: 768px) {
+    .container {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .navbar {
+        width: 100%;
+        height: auto;
+        position: static;
+        text-align: center;
+    }
+
+    .navbar ul li {
+        display: inline-block;
+    }
+
+    .navbar ul li a {
+        display: inline-block;
+        padding: 10px 15px;
+    }
+}

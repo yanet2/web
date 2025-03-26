@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Estacionamiento</title>
+    <link rel="stylesheet" href="resumen.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/index.html">Inicio</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/estacionamiento.html">Estacionamiento</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/reserva.html">Reservar</a></li>
+      <li><a href="https://www.google.com.mx/maps/@31.5892581,-106.4052544,15z?entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D">Mapa</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/ayuda.html">Ayuda</a></li>
+      <li><a href="file:///C:/Users/Pavilion/Desktop/proyecto/contac.html">Contáctanos</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Detalles de tu Reserva</h1>
+        
+        <!-- Mostrar el espacio seleccionado -->
+        <p>Has seleccionado el lugar: <span id="selectedSpot">No seleccionado</span></p>
+
+        <!-- Mostrar el total a pagar -->
+        <p><strong>Total a pagar:</strong> $<span id="totalCost">0</span></p>
+
+        <button onclick="generarQR()">Generar QR</button>
+        <div id="qr-container">
+            <div id="qr-code"></div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener el parámetro de la URL que contiene el lugar seleccionado y las horas
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            const spot = params.get("espacio");
+            const horaInicio = params.get("hora-inicio-horas");
+            const minutoInicio = params.get("hora-inicio-minutos");
+            const periodoInicio = params.get("hora-inicio-periodo");
+            const horaFin = params.get("hora-fin-horas");
+            const minutoFin = params.get("hora-fin-minutos");
+            const periodoFin = params.get("hora-fin-periodo");
+
+            // Convertir hora a formato de 24 horas para cálculo
+            const horaInicio24 = (periodoInicio === "PM" && horaInicio != 12) ? parseInt(horaInicio) + 12 : parseInt(horaInicio);
+            const horaFin24 = (periodoFin === "PM" && horaFin != 12) ? parseInt(horaFin) + 12 : parseInt(horaFin);
+
+            // Calcular la duración en horas
+            const minutosInicio = parseInt(horaInicio24) * 60 + parseInt(minutoInicio);
+            const minutosFin = parseInt(horaFin24) * 60 + parseInt(minutoFin);
+            const duracion = (minutosFin - minutosInicio) / 60; // Duración en horas
+
+            // Suponiendo que el costo por hora es $10
+            const costoPorHora = 10;
+            const total = duracion * costoPorHora;
+
+            // Mostrar los valores en la página
+            document.getElementById("selectedSpot").textContent = spot || "No seleccionado";
+            document.getElementById("totalCost").textContent = total.toFixed(2) || "0";
+        });
+
+        // Función para generar el código QR
+        function generarQR() {
+            const spot = document.getElementById("selectedSpot").textContent;
+            const total = document.getElementById("totalCost").textContent;
+
+            // URL común para el QR con los datos necesarios
+            const url = `${window.location.origin}/resumen.html?espacio=${encodeURIComponent(spot)}&totalPagar=${encodeURIComponent(total)}`;
+
+            // Limpiar el QR anterior antes de generar uno nuevo
+            document.getElementById("qr-code").innerHTML = "";
+
+            // Generar el QR con qrcode.js
+            new QRCode(document.getElementById("qr-code"), {
+                text: url,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+</body>
+</html>
